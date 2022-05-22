@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet', href='style.css'>
+</head>
+<body>
+    <div class="layout">
+        <div class="header">
+            <h1>AP World History Timeline</h1>
+        </div>
+        <div class="row">
+            <button id="colorScheme" class="margin">Dark Mode</button>
+            <button id="clear" class="margin hidden">Clear</button>
+        </div>
+
+
+        <div>
+            <div class="timeline">
+                <div>
+
+                </div>
+                <div>
+                    <div class="row even">
+                        <div class="drop">
+                            <p id="p1">1200-1450</p>
+                            <div id="drop1" class="drop hidden">
+                                <button id="a1">Major Events</button>
+                                <button id="a2">Notable Empires</button>
+                                <button id="a3">Important Institutions</button>
+                            </div>
+                        </div>
+                        <div class="drop">
+                            <p id="p2">1450-1750</p>
+                            <div id="drop2" class="drop hidden">
+                                <button id="b1">Major Events</button>
+                                <button id="b2">Notable Empires</button>
+                                <button id="b3">Important Institutions</button>
+                            </div>
+                        </div>
+                        <div class="drop">
+                            <p id="p3">1750-1900</p>
+                            <div id="drop3" class="drop hidden">
+                                <button id="c1">Major Events</button>
+                                <button id="c2">Notable Empires</button>
+                                <button id="c3">Important Institutions</button>
+                            </div>
+                        </div>
+                        <div class="drop">
+                            <p id="p4">1900-present</p>
+                            <div id="drop4" class="drop hidden">
+                                <button id="d1">Major Events</button>
+                                <button id="d2">Notable Empires</button>
+                                <button id="d3">Important Institutions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="a12" class="hidden">
+            <p>a1</p>
+        </div>
+        <div id="a22" class="hidden">
+            <p>a2</p>
+        </div>
+        <div id="a32" class="hidden">
+            <p>a3</p>
+        </div>
+        <div id="b12" class="hidden">
+            <p>b1</p>
+        </div>
+        <div id="b22" class="hidden">
+            <p>b2</p>
+        </div>
+        <div id="b32" class="hidden">
+            <p>b3</p>
+        </div>
+        <div id="c12" class="hidden">
+            <p>c1</p>
+        </div>
+        <div id="c22" class="hidden">
+            <p>c2</p>
+        </div>
+        <div id="c32" class="hidden">
+            <p>c3</p>
+        </div>
+        <div id="d12" class="hidden">
+            <p>d1</p>
+        </div>
+        <div id="d22" class="hidden">
+            <p>d2</p>
+        </div>
+        <div id="d32" class="hidden">
+            <p>d3</p>
+        </div>
+    </div>
+<script>
+    const body = document.querySelector('body');
+    const layout = document.querySelector('.layout');
+    const a1 = document.getElementById('a1');
+    const a2 = document.getElementById('a2');
+    const a3 = document.getElementById('a3');
+    const b1 = document.getElementById('b1');
+    const b2 = document.getElementById('b2');
+    const b3 = document.getElementById('b3');
+    const c1 = document.getElementById('c1');
+    const c2 = document.getElementById('c2');
+    const c3 = document.getElementById('c3');
+    const d1 = document.getElementById('d1');
+    const d2 = document.getElementById('d2');
+    const d3 = document.getElementById('d3');
+
+    const a12 = document.getElementById('a12');
+    const a22 = document.getElementById('a22');
+    const a32 = document.getElementById('a32');
+    const b12 = document.getElementById('b12');
+    const b22 = document.getElementById('b22');
+    const b32 = document.getElementById('b32');
+    const c12 = document.getElementById('c12');
+    const c22 = document.getElementById('c22');
+    const c32 = document.getElementById('c32');
+    const d12 = document.getElementById('d12');
+    const d22 = document.getElementById('d22');
+    const d32 = document.getElementById('d32');
+
+    const colorButton = document.getElementById('colorScheme');
+    let colorNum = 0;
+
+    const drop1 = document.getElementById('drop1');
+    const drop2 = document.getElementById('drop2');
+    const drop3 = document.getElementById('drop3');
+    const drop4 = document.getElementById('drop4');
+
+    const p1 = document.getElementById('p1');
+    const p2 = document.getElementById('p2');
+    const p3 = document.getElementById('p3');
+    const p4 = document.getElementById('p4');
+
+    const buttons = [a1,a2,a3,b1,b2,b3,c1,c2,c3,d1,d2,d3];
+    const text = [a12,a22,a32,b12,b22,b32,c12,c22,c32,d12,d22,d32];
+    const drops = [drop1,drop2,drop3,drop4];
+    const ps = [p1,p2,p3,p4];
+
+    const clear = document.getElementById('clear');
+
+    // colorNum.addEventListener('change', function(e){
+    //     body.classList.toggle('dark');
+    //     layout.classList.toggle('darkLayout');
+    // });
+    colorButton.addEventListener('click', function(e){
+        body.classList.toggle('dark');
+        layout.classList.toggle('darkLayout');
+        colorNum++;
+        if(colorNum%2===1){
+            colorButton.innerHTML = 'Light Mode';
+        }else{
+            colorButton.innerHTML = 'Dark Mode';
+        }
+    });
+
+    for(let g=0;g<ps.length;g++){
+        let see = drops[g];
+        let p = ps[g]
+        p.addEventListener('click', function(e){
+            for(let h=0;h<drops.length;h++){
+                drops[h].classList.add('hidden');
+            }
+            see.classList.remove('hidden');
+            clear.classList.remove('hidden');
+        });
+        clear.addEventListener('click', function(e){
+            drops[g].classList.add('hidden');
+            clear.classList.add('hidden');
+        });
+    }
+
+    for(let i=0;i<text.length;i++){
+        let see = text[i];
+        let button = buttons[i];
+        button.addEventListener('click', function(e){
+            for(let j=0;j<text.length;j++){
+                text[j].classList.add('hidden');
+            }
+            see.classList.remove('hidden');
+            clear.classList.remove('hidden');
+        });
+        clear.addEventListener('click', function(e){
+            text[i].classList.add('hidden');
+            clear.classList.add('hidden');
+        });
+    };
+</script>
+</body>
+</html>
+
