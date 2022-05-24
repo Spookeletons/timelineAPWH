@@ -18,41 +18,37 @@
 
         <div>
             <div class="timeline">
-                <div>
-
-                </div>
-                <div>
                     <div class="row even">
-                        <div class="drop">
+                        <div class="drop" id="1drop">
                             <p id="p1">1200-1450</p>
                             <div id="drop1" class="drop hidden">
-                                <button id="a1">Major Events</button>
-                                <button id="a2">Notable Empires</button>
-                                <button id="a3">Important Institutions</button>
+                                <button id="a1" class="dropdown">Major Events</button>
+                                <button id="a2" class="dropdown">Notable Empires</button>
+                                <button id="a3" class="dropdown">Important Institutions</button>
                             </div>
                         </div>
-                        <div class="drop">
+                        <div class="drop" id="2drop">
                             <p id="p2">1450-1750</p>
                             <div id="drop2" class="drop hidden">
-                                <button id="b1">Major Events</button>
-                                <button id="b2">Notable Empires</button>
-                                <button id="b3">Important Institutions</button>
+                                <button id="b1" class="dropdown">Major Events</button>
+                                <button id="b2" class="dropdown">Notable Empires</button>
+                                <button id="b3" class="dropdown">Important Institutions</button>
                             </div>
                         </div>
-                        <div class="drop">
+                        <div class="drop" id="3drop">
                             <p id="p3">1750-1900</p>
                             <div id="drop3" class="drop hidden">
-                                <button id="c1">Major Events</button>
-                                <button id="c2">Notable Empires</button>
-                                <button id="c3">Important Institutions</button>
+                                <button id="c1" class="dropdown">Major Events</button>
+                                <button id="c2" class="dropdown">Notable Empires</button>
+                                <button id="c3" class="dropdown">Important Institutions</button>
                             </div>
                         </div>
-                        <div class="drop">
+                        <div class="drop" id="4drop">
                             <p id="p4">1900-present</p>
                             <div id="drop4" class="drop hidden">
-                                <button id="d1">Major Events</button>
-                                <button id="d2">Notable Empires</button>
-                                <button id="d3">Important Institutions</button>
+                                <button id="d1" class="dropdown">Major Events</button>
+                                <button id="d2" class="dropdown">Notable Empires</button>
+                                <button id="d3" class="dropdown">Important Institutions</button>
                             </div>
                         </div>
                     </div>
@@ -130,6 +126,13 @@
     const colorButton = document.getElementById('colorScheme');
     let colorNum = 0;
 
+    const _1drop = document.getElementById('1drop');
+    const _2drop = document.getElementById('2drop');
+    const _3drop = document.getElementById('3drop');
+    const _4drop = document.getElementById('4drop');
+
+    const drops2 = [_1drop,_2drop,_3drop,_4drop]
+
     const drop1 = document.getElementById('drop1');
     const drop2 = document.getElementById('drop2');
     const drop3 = document.getElementById('drop3');
@@ -143,14 +146,15 @@
     const buttons = [a1,a2,a3,b1,b2,b3,c1,c2,c3,d1,d2,d3];
     const text = [a12,a22,a32,b12,b22,b32,c12,c22,c32,d12,d22,d32];
     const drops = [drop1,drop2,drop3,drop4];
+    let timeWidth = layout.clientWidth/4;
+    drop1.clientWidth = timeWidth;
+    drop2.clientWidth = timeWidth;
+    drop3.clientWidth = timeWidth;
+    drop4.clientWidth = timeWidth;
     const ps = [p1,p2,p3,p4];
 
     const clear = document.getElementById('clear');
 
-    // colorNum.addEventListener('change', function(e){
-    //     body.classList.toggle('dark');
-    //     layout.classList.toggle('darkLayout');
-    // });
     colorButton.addEventListener('click', function(e){
         body.classList.toggle('dark');
         layout.classList.toggle('darkLayout');
@@ -167,13 +171,18 @@
         let p = ps[g]
         p.addEventListener('click', function(e){
             for(let h=0;h<drops.length;h++){
-                drops[h].classList.add('hidden');
+                drops2[h].classList.remove('green');
+                drops[h].classList.remove('green');
+                drops[h].classList.remove('hidden');
             }
-            see.classList.remove('hidden');
+            drops2[g].classList.add('green');
+            drops[g].classList.add('green');
             clear.classList.remove('hidden');
         });
         clear.addEventListener('click', function(e){
             drops[g].classList.add('hidden');
+            drops2[g].classList.remove('green');
+            drops[g].classList.remove('green');
             clear.classList.add('hidden');
         });
     }
@@ -193,6 +202,7 @@
             clear.classList.add('hidden');
         });
     };
+
 </script>
 </body>
 </html>

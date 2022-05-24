@@ -16,6 +16,7 @@ a {
     padding:50px;
     background-color:rgb(210,210,210);
     border-radius: 10px;
+    text-align:center;
 }
 .darkLayout{
     background-color:rgb(70,70,70);
@@ -30,12 +31,25 @@ a {
     margin:20px;
 }
 .drop{
+    padding: 0 10px 0 10px;
     display:flex;
     flex-direction: column;
+    background-color:lightcyan;
+    border-radius: 10px;
+    color:rgb(80,80,80);
+}
+.green{
+    background-color:rgb(80,230,80);
+}
+#a3,#b3,#c3,#d3{
+    margin-bottom:10px;
 }
 .hidden{
     display:none;
 }
 .a1{
     display:none;
+}
+.dropdown{
+    margin:5px;
 }
