@@ -12,6 +12,15 @@ a {
     color: #00B7FF;
 }
 
+.center{
+    text-align:center;
+}
+
+.text{
+    font-size: 16pt;
+    padding:10px;
+}
+
 .layout{
     padding:50px;
     background-color:rgb(210,210,210);
