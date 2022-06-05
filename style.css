@@ -15,7 +15,9 @@ a {
 .center{
     text-align:center;
 }
-
+img{
+    max-height:240px;
+}
 .text{
     font-size: 16pt;
     padding:10px;
